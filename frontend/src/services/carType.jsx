@@ -41,7 +41,7 @@ export default function findCarType(tagNames) {
       }
     }
     // If no match is found set unknown so we can handle logic based on this
-    return "unknown";
+    return "Hatchback";
   } catch (error) {
     console.error("Error in findCarType:", error);
     return "unknown";

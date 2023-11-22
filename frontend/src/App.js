@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import findCarType from "./services/carType";
 import carColor from "./services/carColor";
+import listOfCars from "./data/carsdata";
 
 const ApiKey = process.env.REACT_APP_API_KEY;
 const AzureEndpoint = process.env.REACT_APP_BACKEND_URL;
@@ -12,6 +13,7 @@ export default function App() {
   const [image, setImage] = useState(
     "https://www.toyota.co.nz/globalassets/new-vehicles/camry/2021/camry-zr-axhzr-nm1-axrzr-nm1/clear-cuts/updated-clear-cuts/camry-zr-eclipse.png"
   );
+  const [suggestedCars, setSuggestedCars] = useState({});
 
   const handleOnChange = (e) => {
     setImage(e.target.value);
@@ -47,29 +49,47 @@ export default function App() {
     }
   };
 
-  // console.log(data);
+  useEffect(() => {
+    if (data) {
+      const cars = listOfCars(data);
+      console.log(data);
+      setSuggestedCars(cars);
+    }
+  }, [data]);
+
   return (
     <div className="App">
-      <h1>Turners Car Auctions</h1>
-      <div className="inputs">
-        <input
-          className="Input"
-          placeholder="Enter image URL"
-          onChange={handleOnChange}
-          value={image}
-        />
-        <button className="Button" onClick={onButtonClick}>
-          Run Service
-        </button>
-      </div>
-      {/* {data && } */}
-      <img width="300" src={image}></img>
+      <div className="inputContainer">
+        <div className="inputs">
+          <input
+            className="Input"
+            placeholder="Enter image URL"
+            onChange={handleOnChange}
+            value={image}
+          />
+          <button className="Button" onClick={onButtonClick}>
+            Run Service
+          </button>
+        </div>
+        {/* {data && } */}
+        <img width="300" src={image}></img>
 
-      {data && (
+        {data && (
+          <>
+            <h2>{data.text}</h2>
+            {<h3>{data.carcolor}</h3>}
+            {<h3>{data.cartype}</h3>}
+          </>
+        )}
+      </div>
+      {suggestedCars && (
         <>
-          <h2>{data.text}</h2>
-          {<h3>{data.carcolor}</h3>}
-          {<h3>{data.cartype}</h3>}
+          <div className="inputContainer">
+            <img width="300" src={suggestedCars.image}></img>
+            <h2>{suggestedCars.brand}</h2>
+            <h3>{suggestedCars.color}</h3>
+            <h3>{suggestedCars.price}</h3>
+          </div>
         </>
       )}
     </div>
