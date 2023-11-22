@@ -1,16 +1,41 @@
+* {
+  list-style: none;
+  border: 0;
+  padding: 0;
+  border-style: none;
+  box-sizing: border-box;
+}
+
 .App {
-  display: flex;
-  grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
   justify-content: space-around;
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  height: 100vh;
+}
+
+.App > div {
+  grid-column: span 1; /* Divs by default span one column */
+}
+
+.App > div:first-child {
+  grid-column: span 4; /* The first div spans all four columns */
+  height: 100px;
+  margin-top: 50px;
+  width: max-content;
+  /* background-color: aqua; */
 }
 
 .inputContainer {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   padding: 1rem 5rem;
   width: max-content;
+  justify-self: center;
+  background: linear-gradient(to left, #ff7e5f, #feb47b, #5f9dff);
 }
 
 .inputContainer > * {
@@ -24,13 +49,12 @@
 }
 
 .Button {
-  height: 1.5rem;
-  margin-left: 1rem;
   font-size: 1rem;
   border-style: none;
-
-  text-align: center;
+  margin-top: 15px;
   border-radius: 4px;
+  padding: 10px;
+  font-weight: bold;
 }
 
 .Button:hover {

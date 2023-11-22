@@ -27,13 +27,13 @@ export default function findCarType(tagNames) {
       if (matchingCar) {
         if (
           matchingCar === "luxury car" ||
-          "mid-size car" ||
-          "luxury vehicle" ||
-          "family car"
+          matchingCar === "mid-size car" ||
+          matchingCar === "luxury vehicle" ||
+          matchingCar === "family car"
         ) {
           const matchingCar = "Sedan";
           return matchingCar;
-        } else if (matchingCar === "coupe" || "compact") {
+        } else if (matchingCar === "coupe" || matchingCar === "compact") {
           const matchingCar = "Hatchback";
           return matchingCar;
         }

@@ -13,7 +13,7 @@ export default function App() {
   const [image, setImage] = useState(
     "https://www.toyota.co.nz/globalassets/new-vehicles/camry/2021/camry-zr-axhzr-nm1-axrzr-nm1/clear-cuts/updated-clear-cuts/camry-zr-eclipse.png"
   );
-  const [suggestedCars, setSuggestedCars] = useState({});
+  const [suggestedCars, setSuggestedCars] = useState([]);
 
   const handleOnChange = (e) => {
     setImage(e.target.value);
@@ -36,6 +36,7 @@ export default function App() {
       };
       const response = await fetch(`${AzureEndpoint}${analysis}`, fetchOptions);
       const parsedData = await response.json();
+      console.log(parsedData);
       const cartype = findCarType(parsedData.tagsResult.values);
       const carcolor = carColor(parsedData.captionResult.text);
       const text = parsedData.captionResult.text;
@@ -56,42 +57,41 @@ export default function App() {
       setSuggestedCars(cars);
     }
   }, [data]);
-
+  console.log(suggestedCars);
   return (
     <div className="App">
       <div className="inputContainer">
-        <div className="inputs">
-          <input
-            className="Input"
-            placeholder="Enter image URL"
-            onChange={handleOnChange}
-            value={image}
-          />
-          <button className="Button" onClick={onButtonClick}>
-            Run Service
-          </button>
-        </div>
-        {/* {data && } */}
+        <h2>Enter your Image Here </h2>
+        <input
+          className="Input"
+          placeholder="Enter image URL"
+          onChange={handleOnChange}
+          value={image}
+        />
+        <button className="Button" onClick={onButtonClick}>
+          Run Service
+        </button>
+      </div>
+      <div className="inputContainer">
         <img width="300" src={image}></img>
 
         {data && (
           <>
             <h2>{data.text}</h2>
-            {<h3>{data.carcolor}</h3>}
-            {<h3>{data.cartype}</h3>}
+            {<h3>Color: {data.carcolor}</h3>}
+            {<h3>Type: {data.cartype}</h3>}
           </>
         )}
       </div>
-      {suggestedCars && (
-        <>
-          <div className="inputContainer">
-            <img width="300" src={suggestedCars.image}></img>
-            <h2>{suggestedCars.brand}</h2>
-            <h3>{suggestedCars.color}</h3>
-            <h3>{suggestedCars.price}</h3>
+      {suggestedCars &&
+        suggestedCars.map((car, index) => (
+          <div className="inputContainer" key={index}>
+            <img width="300" src={car.image} alt={`Car ${index}`} />
+            <h2>Brand: {car.brand}</h2>
+            <h3>Color: {car.color}</h3>
+            <h3>Price: {car.price}</h3>
           </div>
-        </>
-      )}
+        ))}
     </div>
   );
 }

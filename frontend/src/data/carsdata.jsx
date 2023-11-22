@@ -101,23 +101,26 @@ const hatchbacks = [
   },
 ];
 
-const checkColor = (car, data) => {
+const checkColor = (cars, data) => {
   try {
-    const output = car.find(
-      (check) => check.color === data.carcolor.toLowerCase()
-    );
-    return output;
-  } catch {
-    return car[0];
+    const lowerData = data.color.toLowerCase();
+    const matchingCar = cars.find((check) => check.color === lowerData);
+
+    if (!matchingCar) {
+      return [cars[0], cars[1], cars[2]]; // Return the first three cars if no match
+    }
+
+    const additionalOptions = cars
+      .filter((car) => car.color !== lowerData)
+      .slice(0, 2);
+
+    return [matchingCar, ...additionalOptions];
+  } catch (error) {
+    return [cars[0], cars[1], cars[2]]; // Return the first three cars in case of an error
   }
 };
 
 export default function listOfCars(data) {
-  if (data.cartype.toLowerCase() === "sedan") {
-    return checkColor(sedans, data);
-  } else {
-    return checkColor(hatchbacks, data);
-  }
-
-  return null;
+  const carList = data.cartype.toLowerCase() === "sedan" ? sedans : hatchbacks;
+  return checkColor(carList, data);
 }
