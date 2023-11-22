@@ -13,12 +13,12 @@
   <p align="center">
     Creating an image recognition service 
     <br />
-    <a href="https://github.com/Prasanthyb/Level5Mission2"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/ajleira11/Level5Mission2"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="#">Demo Unavailable</a>
     ·
-    <a href="https://github.com/Prasanthyb/Level5Mission2issues">Report Bug</a>
+    <a href="https://github.com/ajleira11/Level5Mission2/issues">Report Bug</a>
     ·
     
 </div>
@@ -51,7 +51,6 @@ A service that can be called to analyse an image of a car and return a descripti
 ### Built With
 
 - React JS
-- Tailwind CSS
 - Microsoft Azure
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -61,7 +60,7 @@ A service that can be called to analyse an image of a car and return a descripti
 1. Clone repo
 
 ```sh
-gitclone https://github.com/Prasanthyb/Level5Mission2.git
+gitclone https://github.com/ajleira11/Level5Mission2.git
 ```
 
 2. Install packages
@@ -89,18 +88,18 @@ npm run start
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [vite-url]: https://vitejs.dev/
-[contributors-shield]: https://img.shields.io/github/contributors/Prasanthyb/Level5Mission2.svg?style=for-the-badge
-[contributors-url]: https://github.com/Prasanthyb/Level5Mission2/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Prasanthyb/Level5Mission2.svg?style=for-the-badge
-[forks-url]: https://github.com/Prasanthyb/Level5Mission2/network/members
-[stars-shield]: https://img.shields.io/github/stars/Prasanthyb/Level5Mission2.svg?style=for-the-badge
-[stars-url]: https://github.com/Prasanthyb/Level5Mission2/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Prasanthyb/Level5Mission2.svg?style=for-the-badge
-[issues-url]: https://github.com/Prasanthyb/Level5Mission2/issues
-[license-shield]: https://img.shields.io/github/license/Prasanthyb/Level5Mission2.svg?style=for-the-badge
-[license-url]: https://github.com/Prasanthyb/Level5Mission2/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/ajleira11/Level5Mission2.svg?style=for-the-badge
+[contributors-url]: https://github.com/ajleira11/Level5Mission2/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/ajleira11/Level5Mission2.svg?style=for-the-badge
+[forks-url]: https://github.com/ajleira11/Level5Mission2/network/members
+[stars-shield]: https://img.shields.io/github/stars/ajleira11/Level5Mission2.svg?style=for-the-badge
+[stars-url]: https://github.com/ajleira11/Level5Mission2/stargazers
+[issues-shield]: https://img.shields.io/github/issues/ajleira11/Level5Mission2.svg?style=for-the-badge
+[issues-url]: https://github.com/ajleira11/Level5Mission2/issues
+[license-shield]: https://img.shields.io/github/license/ajleira11/Level5Mission2.svg?style=for-the-badge
+[license-url]: https://github.com/ajleira11/Level5Mission2/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[product-screenshot]: https://github.com/Prasanthyb/Level5Mission2/blob/main/src/assets/screenshot.jpg
+[product-screenshot]: https://github.com/ajleira11/Level5Mission2/blob/main/src/assets/screenshot.jpg
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
