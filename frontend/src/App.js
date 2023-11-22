@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import findCarType from "./services/carType";
+import carColor from "./services/carColor";
 
 const ApiKey = process.env.REACT_APP_API_KEY;
 const AzureEndpoint = process.env.REACT_APP_BACKEND_URL;
@@ -32,13 +34,20 @@ export default function App() {
       };
       const response = await fetch(`${AzureEndpoint}${analysis}`, fetchOptions);
       const parsedData = await response.json();
-      setData(parsedData);
-      console.log(parsedData);
+      const cartype = findCarType(parsedData.tagsResult.values);
+      const carcolor = carColor(parsedData.captionResult.text);
+      const text = parsedData.captionResult.text;
+      setData({
+        text,
+        carcolor,
+        cartype,
+      });
     } catch (error) {
       console.error("There is an error during fetch:", error);
     }
   };
 
+  // console.log(data);
   return (
     <div className="App">
       <h1>Turners Car Auctions</h1>
@@ -53,17 +62,16 @@ export default function App() {
           Run Service
         </button>
       </div>
-      {data && <h3>{data.captionResult.text}</h3>}
+      {/* {data && } */}
       <img width="300" src={image}></img>
 
-      <ul className="grid-list">
-        {data &&
-          data.tagsResult.values.map((tag, index) => (
-            <li key={index} className="grid-item">
-              {tag.name} - Confidence: {(tag.confidence * 100).toFixed(2) + "%"}
-            </li>
-          ))}
-      </ul>
+      {data && (
+        <>
+          <h2>{data.text}</h2>
+          {<h3>{data.carcolor}</h3>}
+          {<h3>{data.cartype}</h3>}
+        </>
+      )}
     </div>
   );
 }
