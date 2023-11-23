@@ -3,10 +3,12 @@ import "./App.css";
 import findCarType from "./services/carType";
 import carColor from "./services/carColor";
 import listOfCars from "./data/carsdata";
+import { DisplayResults } from "./components/displayResults";
 
-const ApiKey = process.env.REACT_APP_API_KEY;
-const AzureEndpoint = process.env.REACT_APP_BACKEND_URL;
-const analysis = process.env.REACT_APP_ANALYSIS;
+const ApiKey = process.env.REACT_APP_MY_APIKEY;
+const AzureEndpoint = process.env.REACT_APP_MY_ENDPOINT;
+
+
 
 export default function App() {
   const [data, setData] = useState();
@@ -34,9 +36,8 @@ export default function App() {
           url: image,
         }),
       };
-      const response = await fetch(`${AzureEndpoint}${analysis}`, fetchOptions);
+      const response = await fetch(`${AzureEndpoint}computervision/imageanalysis:analyze?api-version=2023-02-01-preview&features=tags,caption`, fetchOptions);
       const parsedData = await response.json();
-      console.log(parsedData);
       const cartype = findCarType(parsedData.tagsResult.values);
       const carcolor = carColor(parsedData.captionResult.text);
       const text = parsedData.captionResult.text;
@@ -53,11 +54,9 @@ export default function App() {
   useEffect(() => {
     if (data) {
       const cars = listOfCars(data);
-      console.log(data);
       setSuggestedCars(cars);
     }
   }, [data]);
-  console.log(suggestedCars);
   return (
     <div className="App">
       <div className="inputContainer">
@@ -72,26 +71,8 @@ export default function App() {
           Run Service
         </button>
       </div>
-      <div className="inputContainer">
-        <img width="300" src={image}></img>
-
-        {data && (
-          <>
-            <h2>{data.text}</h2>
-            {<h3>Color: {data.carcolor}</h3>}
-            {<h3>Type: {data.cartype}</h3>}
-          </>
-        )}
-      </div>
-      {suggestedCars &&
-        suggestedCars.map((car, index) => (
-          <div className="inputContainer" key={index}>
-            <img width="300" src={car.image} alt={`Car ${index}`} />
-            <h2>Brand: {car.brand}</h2>
-            <h3>Color: {car.color}</h3>
-            <h3>Price: {car.price}</h3>
-          </div>
-        ))}
+      
+        <DisplayResults data={data} suggestedCars={suggestedCars} image={image} />
     </div>
   );
 }
