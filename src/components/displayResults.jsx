@@ -1,18 +1,11 @@
-
-
-
-export const DisplayResults = ({data, suggestedCars, image}) => {
-
-
-    return (
-        <div>
-            <div className="userDetails">
-            <div className="imgPreview">
-        <img width="300" src={image}></img>
-
-        
+export const DisplayResults = ({ data, suggestedCars, image }) => {
+  return (
+    <div>
+      <div className="userDetails">
+        <div className="imgPreview">
+          <img width="300" src={image}></img>
         </div>
-          <div>
+        <div>
           {data && (
             <div>
               <h2>{data.text}</h2>
@@ -20,9 +13,9 @@ export const DisplayResults = ({data, suggestedCars, image}) => {
               <h3>Type: {data.cartype}</h3>
             </div>
           )}
-          </div>
-      
-          <div className="displayresults">
+        </div>
+
+        <div className="displayresults">
           {suggestedCars &&
             suggestedCars.map((car, index) => (
               <div className="displayResultsItem" key={index}>
@@ -32,10 +25,8 @@ export const DisplayResults = ({data, suggestedCars, image}) => {
                 <h3>Price: {car.price}</h3>
               </div>
             ))}
-          </div>
         </div>
-        </div>
-      );
-      
-}
-
+      </div>
+    </div>
+  );
+};

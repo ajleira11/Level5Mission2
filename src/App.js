@@ -5,10 +5,8 @@ import carColor from "./services/carColor";
 import listOfCars from "./data/carsdata";
 import { DisplayResults } from "./components/displayResults";
 
-const ApiKey = process.env.REACT_APP_MY_APIKEY;
-const AzureEndpoint = process.env.REACT_APP_MY_ENDPOINT;
-
-
+const ApiKey = process.env.REACT_APP_API_KEY;
+const AzureEndpoint = process.env.REACT_APP_BACKEND_URL;
 
 export default function App() {
   const [data, setData] = useState();
@@ -36,7 +34,10 @@ export default function App() {
           url: image,
         }),
       };
-      const response = await fetch(`${AzureEndpoint}computervision/imageanalysis:analyze?api-version=2023-02-01-preview&features=tags,caption`, fetchOptions);
+      const response = await fetch(
+        `${AzureEndpoint}computervision/imageanalysis:analyze?api-version=2023-02-01-preview&features=tags,caption`,
+        fetchOptions
+      );
       const parsedData = await response.json();
       const cartype = findCarType(parsedData.tagsResult.values);
       const carcolor = carColor(parsedData.captionResult.text);
@@ -71,8 +72,8 @@ export default function App() {
           Run Service
         </button>
       </div>
-      
-        <DisplayResults data={data} suggestedCars={suggestedCars} image={image} />
+
+      <DisplayResults data={data} suggestedCars={suggestedCars} image={image} />
     </div>
   );
 }
