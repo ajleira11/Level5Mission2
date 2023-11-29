@@ -2,10 +2,8 @@ export const DisplayResults = ({ data, suggestedCars, image }) => {
   return (
     <div>
       <div className="userDetails">
-        <div className="imgPreview">
-          <img width="300" src={image}></img>
-        </div>
         <div>
+          <img width="300" src={image}></img>
           {data && (
             <div>
               <h2>{data.text}</h2>

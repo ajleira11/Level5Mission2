@@ -7,23 +7,23 @@
 }
 
 .App {
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto auto;
   justify-content: space-around;
+ ; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: linear-gradient(to right, #ff7e5f, #feb47b);
   height: 100vh;
+  justify-content: space-around;
 }
 
 .App > div {
-  grid-column: span 1; /* Divs by default span one column */
 }
 
 .App > div:first-child {
-  grid-column: span 4; /* The first div spans all four columns */
-  height: 100px;
-  margin-top: 50px;
-  width: max-content;
   /* background-color: aqua; */
 }
 
@@ -65,15 +65,26 @@
 
 .userDetails {
   display: flex;
-  flex-direction: column;
+  width: max-width;
+  justify-content: center;
   align-items: center;
 }
 .displayresults {
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 5rem;
 }
 .displayResultsItem {
   display: flex;
   flex-direction: column;
+}
+
+.cars {
+  display: flex;
+  justify-content: center;
+}
+
+.userDetails > div:first-child {
+  margin-right: 5rem;
 }

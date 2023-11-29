@@ -73,7 +73,12 @@ export default function App() {
         </button>
       </div>
 
-      <DisplayResults data={data} suggestedCars={suggestedCars} image={image} />
+      <DisplayResults
+        className="cars"
+        data={data}
+        suggestedCars={suggestedCars}
+        image={image}
+      />
     </div>
   );
 }
