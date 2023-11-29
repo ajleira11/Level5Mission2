@@ -11,7 +11,7 @@
 <h3 align="center">Mission 2</h3>
 
   <p align="center">
-    Creating an image recognition service 
+    Creating an image recognition service. 
     <br />
     <a href="https://github.com/ajleira11/Level5Mission2"><strong>Explore the docs »</strong></a>
     <br />
